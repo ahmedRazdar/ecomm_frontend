@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, mapToCanActivate } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { SellerAuthComponent } from './pages/seller-auth/seller-auth.component';
+import { SellerDashboardComponent } from './components/seller-dashboard/seller-dashboard.component';
+import { authGuard } from './auth/guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -11,6 +13,11 @@ const routes: Routes = [
   {
     path:'seller-auth',
     component:SellerAuthComponent
+  },
+  {
+    path:'seller-dashboard',
+    component:SellerDashboardComponent,
+    canActivate: [authGuard]
   }
 ];
 
